@@ -2,8 +2,10 @@ package com.fufu.service;
 
 import com.fufu.config.DS;
 import com.fufu.entity.BlogVisitor;
+import com.fufu.entity.User;
 import com.fufu.entity.UserInfo;
 import com.fufu.mapper.BlogVisitorMapper;
+import com.fufu.mapper.UserAuthMapper;
 import com.fufu.mapper.UserInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import java.util.List;
 public class RestfulService {
     @Autowired private BlogVisitorMapper blogVisitorMapper;
     @Autowired private UserInfoMapper userInfoMapper;
+    @Autowired private UserAuthMapper userAuthMapper;
 
     @DS("datasource1")
     public void addBlogVisitor(BlogVisitor blogVisitor) {
@@ -49,5 +52,11 @@ public class RestfulService {
         userInfo.setUserName("i am master");
         userInfoMapper.insert(userInfo);
 //        throw new RuntimeException("heiheihei");//事务测试
+    }
+
+    //shiro鉴权
+    @DS("datasource1")
+    public User findByUsername(String username) {
+        return userAuthMapper.findByUsername(username);
     }
 }

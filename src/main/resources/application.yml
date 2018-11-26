@@ -37,8 +37,9 @@ spring:
   thymeleaf:
     cache: false
   mvc:
-    favicon:
-      enabled: false
+    view:
+      prefix: /pages/
+      suffix: .jsp
   #Multi DataSource Config
   datasource:
     primary:

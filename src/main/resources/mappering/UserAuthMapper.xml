@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fufu.mapper.UserAuthMapper">
+
+    <resultMap id="userMap" type="com.fufu.entity.User">
+        <id property="uid" column="uid"/>
+        <result property="username" column="user_name"/>
+        <result property="password" column="pass_word"/>
+        <collection property="roles" ofType="com.fufu.entity.Role">
+            <id property="rid" column="rid"/>
+            <result property="name" column="role_name"/>
+            <collection property="permissions" ofType="com.fufu.entity.Permission">
+                <id property="pid" column="pid"/>
+                <result property="name" column="permission_name"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="findByUsername" parameterType="string" resultMap="userMap">
+        SELECT *
+        FROM login_user u,login_role r,login_permission p
+        WHERE u.rid=r.rid
+        AND p.rid=r.rid
+        AND u.user_name=#{username}
+    </select>
+
+</mapper>
