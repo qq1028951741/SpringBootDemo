@@ -1,4 +1,4 @@
-package com.fufu.config;
+package com.fufu.config.dynamicdatasource;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

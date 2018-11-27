@@ -1,4 +1,4 @@
-package com.fufu.config;
+package com.fufu.config.shiro;
 
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -77,6 +77,8 @@ public class ShiroConfiguration {
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         filterChainDefinitionMap.put("/index", "authc");
         filterChainDefinitionMap.put("/login", "anon");
+        filterChainDefinitionMap.put("/websocket/**", "anon");
+        filterChainDefinitionMap.put("/socket/**", "anon");
         filterChainDefinitionMap.put("/loginUser", "anon");
         filterChainDefinitionMap.put("/admin", "roles[admin]");
         filterChainDefinitionMap.put("/edit", "perms[delete]");

@@ -1,4 +1,4 @@
-package com.fufu.config;
+package com.fufu.config.dynamicdatasource;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

@@ -1,4 +1,4 @@
-package com.fufu.config;
+package com.fufu.config.dynamicdatasource;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.alibaba.druid.support.http.StatViewServlet;

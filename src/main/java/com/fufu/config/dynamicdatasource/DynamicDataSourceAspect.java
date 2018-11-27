@@ -1,4 +1,4 @@
-package com.fufu.config;
+package com.fufu.config.dynamicdatasource;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 @Order(0)
 public class DynamicDataSourceAspect {
 
-    @Before("@annotation(DS)")
+    @Before("@annotation(com.fufu.config.dynamicdatasource.DS)")
     public void beforeSwitchDS(JoinPoint point){
         //获得当前访问的class
         Class<?> className = point.getTarget().getClass();
@@ -42,7 +42,7 @@ public class DynamicDataSourceAspect {
         DataSourceContextHolder.setDB(dataSource);
     }
 
-    @After("@annotation(DS)")
+    @After("@annotation(com.fufu.config.dynamicdatasource.DS)")
     public void afterSwitchDS(JoinPoint point){
         DataSourceContextHolder.clearDB();
     }

@@ -1,4 +1,4 @@
-package com.fufu.config;
+package com.fufu.config.dynamicdatasource;
 
 public class DataSourceContextHolder {
     /**

@@ -1,10 +1,12 @@
 package com.fufu.httprequest;
 
 import com.fufu.SpringBootDemoApplication;
+import com.fufu.dao.RedisDao;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -31,4 +33,14 @@ public class SpringBootDemoApplicationTests {
         Object obj = new SimpleHash(hashAlgorithName, password, credentialsSalt, hashIterations);
         System.out.println(obj);
     }
+
+    @Autowired RedisDao redisDao;
+    @Test
+    public void testRedis(){
+        redisDao.setKey("name","fufu");
+        redisDao.setKey("age","18");
+        System.out.println(redisDao.getValue("name"));
+        System.out.println(redisDao.getValue("age"));
+    }
+
 }

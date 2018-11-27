@@ -1,4 +1,4 @@
-package com.fufu.config;
+package com.fufu.config.shiro;
 
 import com.fufu.entity.Permission;
 import com.fufu.entity.Role;
