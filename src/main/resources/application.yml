@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8090
 
 #  datasource:
 #    #使用druid连接池
@@ -31,6 +31,8 @@ pagehelper:
 
 # Spring configuration
 spring:
+  resources:
+    static-locations: file:${upload.filePath},classpath:/templates/,classpath:/static/
   thymeleaf:
     #开启模板缓存（默认值：true）
     cache: false
@@ -152,6 +154,13 @@ logging:
 #修改日志级别，默认为INFO
   level:
     root: DEBUG
+
+upload:
+  filePath: D:/test/
+serviceIP: 127.0.0.1
+servicePort: 8090
+rootPath: D:\
+
 
 
 

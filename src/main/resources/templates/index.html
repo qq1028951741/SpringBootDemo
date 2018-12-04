@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>欢迎光临, [[${username}]]</h1>
+<a th:href="@{/admin}">admin权限访问</a>
+<a th:href="@{/test}">guest权限访问</a>
+<input type = "button" value = "登出" onclick="javascript:window.location.href='/logout';">
+</body>
+</html>

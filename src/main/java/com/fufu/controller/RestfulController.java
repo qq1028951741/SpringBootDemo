@@ -8,21 +8,13 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.InputStream;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @EnableTransactionManagement
@@ -132,4 +124,6 @@ public class RestfulController {
             return JsonUtil.getInstance().putData("ret", -1).putData("msg", e.getMessage()).pushData();
         }
     }
+
+
 }

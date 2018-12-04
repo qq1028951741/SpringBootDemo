@@ -75,14 +75,25 @@ public class ShiroConfiguration {
         bean.setUnauthorizedUrl("/pages/unauthorized.jsp");
         //定义过滤器
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        filterChainDefinitionMap.put("/index", "authc");
+        // 对静态资源设置匿名访问
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/websocket/**", "anon");
         filterChainDefinitionMap.put("/socket/**", "anon");
         filterChainDefinitionMap.put("/loginUser", "anon");
+        filterChainDefinitionMap.put("/favicon.ico**", "anon");
+        filterChainDefinitionMap.put("/ruoyi.png**", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/docs/**", "anon");
+        filterChainDefinitionMap.put("/fonts/**", "anon");
+        filterChainDefinitionMap.put("/img/**", "anon");
+        filterChainDefinitionMap.put("/ajax/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/ruoyi/**", "anon");
+        filterChainDefinitionMap.put("/druid/**", "anon");
+        filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
+        filterChainDefinitionMap.put("/websocket/**", "anon");
         filterChainDefinitionMap.put("/admin", "roles[admin]");
         filterChainDefinitionMap.put("/edit", "perms[delete]");
-        filterChainDefinitionMap.put("/druid/**", "anon");
         //需要登录访问的资源 , 一般将/**放在最下边
         filterChainDefinitionMap.put("/**", "authc");
         bean.setFilterChainDefinitionMap(filterChainDefinitionMap);

@@ -1,18 +1,17 @@
 package com.fufu.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.fufu.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController{
@@ -21,13 +20,14 @@ public class LoginController{
     @RequestMapping("/loginUser")
     public String loginUser(@RequestParam("username") String username,
                             @RequestParam("password") String password,
-                            HttpSession session) {
+                            Model model) {
         //把前端输入的username和password封装为token
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(token);
-            session.setAttribute("user", subject.getPrincipal());
+            User user=(User) subject.getPrincipal();
+            model.addAttribute("username", user.getUsername());
             return "index";
         } catch (Exception e) {
             return "login";
@@ -44,7 +44,7 @@ public class LoginController{
         return "login";
     }
 
-    //访问login时跳到login.jsp
+    //访问login时跳到login.html
     @RequestMapping("/login")
     public String login() {
         return "login";
