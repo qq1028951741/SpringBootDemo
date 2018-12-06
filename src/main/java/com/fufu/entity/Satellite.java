@@ -1,6 +1,6 @@
 package com.fufu.entity;
 
-import com.fufu.config.excel.Excel;
+import com.fufu.annotation.Excel;
 
 import java.util.Date;
 

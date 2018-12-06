@@ -22,7 +22,7 @@ public class MessagePushController {
     }
     //推送数据接口
     @ResponseBody
-    @RequestMapping("/socket/push/{cid}")
+    @GetMapping("/socket/push/{cid}")
     public String pushToWeb(@PathVariable String cid, String message) {
         try {
             WebSocketServer.sendInfo(message,cid);

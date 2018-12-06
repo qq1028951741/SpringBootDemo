@@ -1,6 +1,6 @@
 package com.fufu.service;
 
-import com.fufu.config.dynamicdatasource.DS;
+import com.fufu.annotation.DS;
 import com.fufu.config.excel.ExcelDataFormatter;
 import com.fufu.config.excel.ExcelToBean;
 import com.fufu.entity.BlogVisitor;

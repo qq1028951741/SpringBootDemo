@@ -1,6 +1,6 @@
 package com.fufu.service;
 
-import com.fufu.config.dynamicdatasource.DS;
+import com.fufu.annotation.DS;
 import com.fufu.entity.User;
 import com.fufu.mapper.UserAuthMapper;
 import org.springframework.beans.factory.annotation.Autowired;

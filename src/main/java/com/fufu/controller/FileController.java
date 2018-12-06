@@ -73,7 +73,7 @@ public class FileController {
     }
 
     //接收base64图片字符串
-    @RequestMapping("/test/upload3")
+    @PostMapping("/test/upload3")
     public void upload2(String base64) throws IOException {
         final File tempFile = new File(filePath+"upload3.jpg");
         //防止有的没传 data:image/jpeg;base64, 的情况
@@ -84,7 +84,7 @@ public class FileController {
     }
 
     //根据http协议下载图片
-    @RequestMapping("/test/upload4")
+    @GetMapping("/test/upload4")
     public String downloadFileByURL(String urlStr) throws IOException {
         URL url = new URL(UrlUtil.toUtf8String(urlStr));
         String picPath = filePath+"upload4.jpg";

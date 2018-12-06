@@ -61,44 +61,44 @@ public class ShiroConfiguration {
      * @param manager
      * @return
      */
-    @Bean("shiroFilter")
-    public ShiroFilterFactoryBean shiroFilter(@Qualifier("securityManager") DefaultWebSecurityManager manager) {
-        ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
-        //设置securityManager
-        bean.setSecurityManager(manager);
-        //设置登录页面
-        //可以写路由也可以写jsp页面的访问路径
-        bean.setLoginUrl("/login");
-        //设置登录成功跳转的页面
-        bean.setSuccessUrl("/pages/index.jsp");
-        //设置未授权跳转的页面
-        bean.setUnauthorizedUrl("/pages/unauthorized.jsp");
-        //定义过滤器
-        LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        // 对静态资源设置匿名访问
-        filterChainDefinitionMap.put("/login", "anon");
-        filterChainDefinitionMap.put("/websocket/**", "anon");
-        filterChainDefinitionMap.put("/socket/**", "anon");
-        filterChainDefinitionMap.put("/loginUser", "anon");
-        filterChainDefinitionMap.put("/favicon.ico**", "anon");
-        filterChainDefinitionMap.put("/ruoyi.png**", "anon");
-        filterChainDefinitionMap.put("/css/**", "anon");
-        filterChainDefinitionMap.put("/docs/**", "anon");
-        filterChainDefinitionMap.put("/fonts/**", "anon");
-        filterChainDefinitionMap.put("/img/**", "anon");
-        filterChainDefinitionMap.put("/ajax/**", "anon");
-        filterChainDefinitionMap.put("/js/**", "anon");
-        filterChainDefinitionMap.put("/ruoyi/**", "anon");
-        filterChainDefinitionMap.put("/druid/**", "anon");
-        filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
-        filterChainDefinitionMap.put("/websocket/**", "anon");
-        filterChainDefinitionMap.put("/admin", "roles[admin]");
-        filterChainDefinitionMap.put("/edit", "perms[delete]");
-        //需要登录访问的资源 , 一般将/**放在最下边
-        filterChainDefinitionMap.put("/**", "authc");
-        bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-        return bean;
-    }
+//    @Bean("shiroFilter")
+//    public ShiroFilterFactoryBean shiroFilter(@Qualifier("securityManager") DefaultWebSecurityManager manager) {
+//        ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
+//        //设置securityManager
+//        bean.setSecurityManager(manager);
+//        //设置登录页面
+//        //可以写路由也可以写jsp页面的访问路径
+//        bean.setLoginUrl("/login");
+//        //设置登录成功跳转的页面
+//        bean.setSuccessUrl("/pages/index.jsp");
+//        //设置未授权跳转的页面
+//        bean.setUnauthorizedUrl("/pages/unauthorized.jsp");
+//        //定义过滤器
+//        LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+//        // 对静态资源设置匿名访问
+//        filterChainDefinitionMap.put("/login", "anon");
+//        filterChainDefinitionMap.put("/websocket/**", "anon");
+//        filterChainDefinitionMap.put("/socket/**", "anon");
+//        filterChainDefinitionMap.put("/loginUser", "anon");
+//        filterChainDefinitionMap.put("/favicon.ico**", "anon");
+//        filterChainDefinitionMap.put("/ruoyi.png**", "anon");
+//        filterChainDefinitionMap.put("/css/**", "anon");
+//        filterChainDefinitionMap.put("/docs/**", "anon");
+//        filterChainDefinitionMap.put("/fonts/**", "anon");
+//        filterChainDefinitionMap.put("/img/**", "anon");
+//        filterChainDefinitionMap.put("/ajax/**", "anon");
+//        filterChainDefinitionMap.put("/js/**", "anon");
+//        filterChainDefinitionMap.put("/ruoyi/**", "anon");
+//        filterChainDefinitionMap.put("/druid/**", "anon");
+//        filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
+//        filterChainDefinitionMap.put("/websocket/**", "anon");
+//        filterChainDefinitionMap.put("/admin", "roles[admin]");
+//        filterChainDefinitionMap.put("/edit", "perms[delete]");
+//        //需要登录访问的资源 , 一般将/**放在最下边
+//        filterChainDefinitionMap.put("/**", "authc");
+//        bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+//        return bean;
+//    }
 
     /**
      * Spring的一个bean , 由Advisor决定对哪些类的方法进行AOP代理 .
