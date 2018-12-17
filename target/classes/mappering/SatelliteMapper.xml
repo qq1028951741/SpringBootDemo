@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fufu.mapper.SatelliteMapper">
+  <resultMap id="BaseResultMap" type="com.fufu.entity.Satellite">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="satellite_name" jdbcType="VARCHAR" property="satelliteName" />
+    <result column="satellite_no" jdbcType="VARCHAR" property="satelliteNo" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="satellite_type" jdbcType="SMALLINT" property="satelliteType" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="safe_time" jdbcType="SMALLINT" property="safeTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, satellite_name, satellite_no, country, satellite_type, start_time, end_time, 
+    safe_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from satellite
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from satellite
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteAll">
+    delete from satellite  where 1=1
+  </delete>
+  <insert id="insert" parameterType="com.fufu.entity.Satellite">
+    insert into satellite (id, satellite_name, satellite_no, 
+      country, satellite_type, start_time, 
+      end_time, safe_time)
+    values (#{id,jdbcType=BIGINT}, #{satelliteName,jdbcType=VARCHAR}, #{satelliteNo,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{satelliteType,jdbcType=SMALLINT}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{safeTime,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fufu.entity.Satellite">
+    insert into satellite
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="satelliteName != null">
+        satellite_name,
+      </if>
+      <if test="satelliteNo != null">
+        satellite_no,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="satelliteType != null">
+        satellite_type,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="safeTime != null">
+        safe_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="satelliteName != null">
+        #{satelliteName,jdbcType=VARCHAR},
+      </if>
+      <if test="satelliteNo != null">
+        #{satelliteNo,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="satelliteType != null">
+        #{satelliteType,jdbcType=SMALLINT},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="safeTime != null">
+        #{safeTime,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fufu.entity.Satellite">
+    update satellite
+    <set>
+      <if test="satelliteName != null">
+        satellite_name = #{satelliteName,jdbcType=VARCHAR},
+      </if>
+      <if test="satelliteNo != null">
+        satellite_no = #{satelliteNo,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="satelliteType != null">
+        satellite_type = #{satelliteType,jdbcType=SMALLINT},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="safeTime != null">
+        safe_time = #{safeTime,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fufu.entity.Satellite">
+    update satellite
+    set satellite_name = #{satelliteName,jdbcType=VARCHAR},
+      satellite_no = #{satelliteNo,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      satellite_type = #{satelliteType,jdbcType=SMALLINT},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      safe_time = #{safeTime,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
